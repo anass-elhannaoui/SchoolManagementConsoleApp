@@ -19,16 +19,17 @@ public class PaiementService {
 
     @Autowired
     private PaiementRepository paiementRepository;
-    Scanner scanner = new Scanner(System.in);
+   
     public void enregistrerPaiement() {
 
-
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Email de l'étudiant : ");
         String email = scanner.nextLine();
 
         Etudiant etudiant = etudiantRepository.findByEmail(email);
         if (etudiant == null) {
             System.out.println("⛔ Étudiant non trouvé !");
+            scanner.close();
             return;
         }
 
@@ -70,6 +71,7 @@ public class PaiementService {
         etudiantRepository.save(etudiant);
 
         System.out.println("✅ Paiement enregistré !");
+        scanner.close();
     }
 
     public void AfficherHistoryDePaiement(String email){

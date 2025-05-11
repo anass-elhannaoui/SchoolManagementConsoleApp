@@ -27,6 +27,7 @@ public class NoteService {
         Etudiant etudiant = etudiantRepository.findByEmail(email);
         if (etudiant == null) {
             System.out.println("⛔ Étudiant non trouvé !");
+            scanner.close();
             return;
         }
 
@@ -60,6 +61,7 @@ public class NoteService {
 
         noteRepository.save(note);
         System.out.println("✅ Note enregistrée !");
+        scanner.close();
     }
 
     public void AfficherNotes(String email){

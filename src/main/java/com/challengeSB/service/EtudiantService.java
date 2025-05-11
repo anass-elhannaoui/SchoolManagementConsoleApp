@@ -13,9 +13,8 @@ public class EtudiantService {
 
     @Autowired
     private EtudiantRepository etudiantRepository;
-    static Scanner scanner = new Scanner(System.in);
     public void ajouterEtudiant() {
-
+        Scanner scanner = new Scanner(System.in);
 
         Etudiant etudiant = new Etudiant();
 
@@ -74,6 +73,7 @@ public class EtudiantService {
 
         etudiantRepository.save(etudiant);
         System.out.println("✅ L'étudiant a été ajouté avec succès !");
+        scanner.close();
     }
 
 
@@ -101,6 +101,7 @@ public class EtudiantService {
 
     public void modifierInfos(Etudiant etudiant) {
         Etudiant e = etudiantRepository.findByEmail(etudiant.getEmail());
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.print("🔑 Nouveau mot de passe : ");
@@ -123,6 +124,7 @@ public class EtudiantService {
             }
             // on peut aussi ajouter des contraint pour assurer que le mot de passe est fort quand necessaire
         }
+        scanner.close();    
     }
 
 
