@@ -80,7 +80,7 @@ public class EtudiantService {
     public void afficherEtudiantsAvecSolde() {
         List<Etudiant> etudiants = etudiantRepository.findAll();
         System.out.printf("%-5s %-10s %-20s %-15s %-10s %-10s\n", "ID", "Nom", "Email", "Mot de passe", "Classe", "Solde restant");
-        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------");
 
         for (Etudiant etudiant : etudiants) {
             System.out.printf("%-5d %-10s %-20s %-15s %-10s %.2fDH\n",
@@ -92,7 +92,7 @@ public class EtudiantService {
                     etudiant.getSoldeRestant()
             );
         }
-
+        System.out.println("---------------------------------------------------------------------------------");
     }
 
     public Etudiant getEtudiantByEmail(String email) {
@@ -121,7 +121,10 @@ public class EtudiantService {
             } else {
                 System.out.println("❌ Les mots de passe ne correspondent pas. Veuillez réessayer.");
             }
+            // on peut aussi ajouter des contraint pour assurer que le mot de passe est fort quand necessaire
         }
     }
+
+
 
 }

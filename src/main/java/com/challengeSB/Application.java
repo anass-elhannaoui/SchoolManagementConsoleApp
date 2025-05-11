@@ -76,24 +76,33 @@ public class Application implements CommandLineRunner {
 
 			switch (choix) {
 				case "1":
+					System.out.println("-------------------------------------------");
 					etudiantService.ajouterEtudiant();
+					System.out.println("-------------------------------------------");
 					break;
 				case "2":
+					System.out.println("-------------------------------------------");
 					System.out.println("Saisir les notes:");
 					noteService.saisirNote();
+					System.out.println("-------------------------------------------");
 					break;
 				case "3":
+					System.out.println("-------------------------------------------");
 					System.out.println("Enregistrer un paiement:");
 					paiementService.enregistrerPaiement();
+					System.out.println("-------------------------------------------");
 					break;
 				case "4":
+					System.out.println("-------------------------------------------");
 					System.out.println("Liste des étudiants:");
 					etudiantService.afficherEtudiantsAvecSolde();
 					break;
+
 				case "0":
 					return;
 				default:
 					System.out.println("⛔ Choix invalide !");
+					System.out.println("-------------------------------------------");
 			}
 		}
 	}
@@ -133,29 +142,41 @@ public class Application implements CommandLineRunner {
 			System.out.println("\n    ---- Bienvenue "+ etudiantEnligne.getNom()+" ----");
 
 			System.out.println("1. Consulter mes notes");
-			System.out.println("2. Voir mon solde à payer");
-			System.out.println("3. Modifier mon mot de passe");
+			System.out.println("2. Voir L'historique de mes paiement");
+			System.out.println("3. Voir mon solde à payer");
+			System.out.println("4. Modifier mon mot de passe");
 			System.out.println("0. Déconnexion");
 			System.out.print("Votre choix : ");
 			String choix = scanner.nextLine();
 			String email = etudiantEnligne.getEmail();
 			switch (choix) {
 				case "1":
-					System.out.println("Vos notes:");
+					System.out.println("    ------ Vos notes: ------");
 					noteService.AfficherNotes(email);
+					System.out.println("----------------------------");
 					break;
 				case "2":
-					System.out.println("Il vous reste "+ etudiantEnligne.getSoldeRestant()+"DH a payer");
+					System.out.println("    ------ Vos paiement: ------");
+					paiementService.AfficherHistoryDePaiement(email);
+					System.out.println("-------------------------------------------");
 					break;
 				case "3":
+					System.out.println("-------------------------------------------");
+					System.out.println("Il vous reste "+ etudiantEnligne.getSoldeRestant()+"DH a payer");
+					System.out.println("-------------------------------------------");
+					break;
+				case "4":
+					System.out.println("-------------------------------------------");
 					System.out.println("Modifier votre mot de passe:");
 					etudiantService.modifierInfos(etudiantEnligne);
+					System.out.println("-------------------------------------------");
 					break;
 				case "0":
 					Athenticated = false;
 					break;
 				default:
 					System.out.println("⛔ Choix invalide !");
+					System.out.println("-------------------------------------------");
 			}
 		}
 	}
